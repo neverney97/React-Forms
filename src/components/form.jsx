@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function Form() {
+export default function Form(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,9 +20,15 @@ export default function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
+    
+    let newUser = {
+      name: name,
+      email: email,
+    };
+
+    props.addUser(newUser);
+    setName('');
+
   }
 
   return (
