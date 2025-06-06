@@ -4,7 +4,7 @@ import { useState } from 'react';
 export default function Form(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -14,8 +14,8 @@ export default function Form(props) {
     setEmail(event.target.value);
   }
 
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
+  const handleMessage = (event) => {
+    setMessage(event.target.value);
   }
 
   const handleSubmit = (event) => {
@@ -34,7 +34,7 @@ export default function Form(props) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-slate-50 to-slate-200 flex items-center justify-center p-6">
       <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-2xl space-y-6 transition-all duration-300">
-        <h2 className="text-3xl font-semibold text-slate-800 text-center">Sign UP</h2>
+        <h2 className="text-3xl font-semibold text-slate-800 text-center">Contact Us</h2>
         <div>
           <label className="block text-sm font-medium text-slate-600">Name</label>
           <input
@@ -58,11 +58,11 @@ export default function Form(props) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-600">Password</label>
+          <label className="block text-sm font-medium text-slate-600">Message</label>
           <textarea
-            value={password}
-            onChange={handlePassword}
-            name="password"
+            value={message}
+            onChange={handleMessage}
+            name="message"
             required
             className="mt-1 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition"
           />
