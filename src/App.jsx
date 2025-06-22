@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Form from './components/form'
 import List from './components/userList'
 
@@ -22,10 +21,30 @@ const App = () => {
     setUsers([...users, newUser]);
   };
 
+  const editUser = (userId, newDetails) => {
+    const updatedUsers = users.map(user => {
+      if (user.id === userId) {
+        return { ...user, ...newDetails };
+      } else {
+        return user;
+      }
+    });
+    setUsers(updatedUsers);
+  };
+
+  const deleteUser = (userId) => {
+    let filteredArray = users.filter((user) => {
+      if (user.id !== userId ){
+        return user;
+      }
+    })
+    setUsers(filteredArray);
+  }
+
   return (
-    <div className='grid grid-cols-2'>
-      <Form  addUser={addNewUser}/>
-      <List  usersList={users}/>
+    <div className='grid grid-cols-2 gap-4 p-4'>
+      <Form addUser={addNewUser} />
+      <List usersList={users} editedUser={editUser} deletedUser={deleteUser} />
     </div>
   )
 }
